@@ -1,0 +1,260 @@
+/* Should defined it every time */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #292524;
+  color: #fafaf9;
+  font-family: "Sono", sans-serif;
+  padding: 48px 64px;
+}
+
+/* hide any element by add this class */
+/* use !inportance for priority this class before (display:flex will override display: none) */
+.hidden {
+  display: none !important;
+}
+
+/* MAIN LAYOUT */
+/* max-width = fix width at 1500px if more but if lower it will follow*/
+/* margin top,bottom = 0 left,right = auto --> will be center if lower or expand vh it will follow */
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 2 col first width 250px second follow the rest */
+.main {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 48px;
+}
+
+/* normally should use @media neare the element it changed */
+/* 900px it should not have 2 layout */
+/* grid-template-columns: 1fr; --> adjust all to 1 column  */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ELEMENTS */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* .logo in img */
+.logo img {
+  width: 68px;
+  height: 68px;
+}
+
+/* text-transform to uppercase */
+/* line-height: 1 normally use with text or form element */
+h1 {
+  font-size: 42px;
+  text-transform: uppercase;
+  font-family: "Coiny", sans-serif;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+.category {
+  margin-bottom: 16px;
+}
+
+/* letter-spacing: -1px; --> ex btn it;s space between b and t, t and n */
+/* flex-row --> adjust y axis --> use align-items */
+.fact {
+  font-size: 20px;
+  line-height: 1.4;
+  background-color: #44403c;
+  margin-bottom: 16px;
+  padding: 16px 24px;
+  letter-spacing: -1px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* all the browser width below 1200 px this code will apply*/
+/* flex-col --> adjust x axis --> use align-items --> flex-end = all shift to the end*/
+@media (max-width: 1200px) {
+  .fact {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+}
+
+.tag {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Coiny", sans-serif;
+  padding-top: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 100px;
+}
+
+/* flex-shrink: 0; --> we did not want the other element to effect with this element (otther element will adjust or break) 
+not allow .vote-buttons to shrink */
+.vote-buttons {
+  margin-left: auto;
+  flex-shrink: 0;
+
+  display: flex;
+  gap: 8px;
+}
+
+/* color: inherit normally global css cant access some tag but this attribute can do that(#fafaf9 in body can access button)  */
+/* transition: 0.3s; it delay some animation in this case it is hover --> hover will smooth */
+/* font-weight: 600; -->  we bring google font w weight (Sono:wght@400;600) default is 400 then bold = 600*/
+.vote-buttons button {
+  border: none;
+  background-color: #78716c;
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.vote-buttons button:hover {
+  background-color: #292524;
+}
+
+/* list-style: none; bring the list style out */
+ul {
+  list-style: none;
+}
+
+.source:link,
+.source:visited {
+  color: #a8a29e;
+  text-decoration: none;
+  margin-left: 12px;
+  transition: 0.3s;
+}
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+
+/* cursor: pointer whem scroll mouse to this button it will change the apprerance of cursor */
+/* background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+color will linear to the 135 degree and use all color below to adjust this button */
+.btn {
+  border: none;
+  font-family: "Coiny", sans-serif;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 17px;
+  padding: 16px 0 13px;
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  color: inherit;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* transform: scale(110%) rotate(-2deg); --> button will bigger in 110% / rotate -2 degree */
+.btn:hover {
+  transform: scale(110%) rotate(-2deg);
+}
+
+/* padding top leftandright bottom */
+.btn-large {
+  font-size: 20px;
+  padding: 20px 32px 17px;
+}
+
+/* width: 100%; defined or calculated in relation to parent element */
+.btn-all-categories {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* background-image: none; --> order to unuse the background-image */
+.btn-category {
+  width: 100%;
+  background-image: none;
+}
+
+/* FORM */
+.fact-form {
+  background-color: #44403c;
+  margin-bottom: 40px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 16px;
+}
+
+/* both class with , will use this css */
+.fact-form input,
+.fact-form select {
+  width: 220px;
+  background-color: #78716c;
+  border: none;
+  border-radius: 100px;
+  padding: 16px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+}
+
+/* input::placeholder --> select input with attribute placeholder  and adjust css that placeholder */
+.fact-form input::placeholder {
+  color: #a8a29e;
+}
+
+/* fact-form input:first-child --> select input that is first-child in .facr-form  */
+/* flex-grow: 1; --> this element can be expand whaterver it want other element will stay the same */
+.fact-form input:first-child {
+  flex-grow: 1;
+}
+
+.fact-form span {
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 18px;
+}
+
+@media (max-width: 1000px) {
+  /* adjust padding to smaller when use in mobile */
+  body {
+    padding: 32px 48px;
+  }
+
+  /* align-items: stretch --> the element with this will expand to the width of container (x axis) */
+  .fact-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  /* width: auto; --> adjust follow the container(.fact-form)*/
+  .fact-form input,
+  .fact-form select {
+    width: auto;
+  }
+}
